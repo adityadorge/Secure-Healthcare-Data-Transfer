@@ -1,1 +1,9 @@
+# VENV dirs
 EHR/
+shdt_env/
+
+# DB files
+db.sqlite3
+
+# cache files
+__pycache__/
