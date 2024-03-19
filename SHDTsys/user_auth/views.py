@@ -5,9 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from .forms import SignUpForm
-from django.contrib.auth.decorators import login_required
 
-@login_required
 def home(request):
     return render(request, 'home.html', {})
 
