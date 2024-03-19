@@ -5,7 +5,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from .forms import SignUpForm
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def home(request):
     return render(request, 'home.html', {})
 
@@ -22,7 +24,7 @@ def login_user(request):
             messages.error(request, ("There was error please try again"))
             return redirect('login')
     else:
-        return render(request,'login.html', {})
+        return render(request,'user_auth/login.html', {})
 
 def logout_user(request):
     logout(request)
@@ -46,4 +48,4 @@ def register_user(request):
             messages.error(request, ("Error please try again later"))
             return redirect('register')
     else:
-        return render(request, 'register.html', {'form':form})
+        return render(request, 'user_auth/register.html', {'form':form})
