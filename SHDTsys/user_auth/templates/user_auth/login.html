@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,6 +34,11 @@
                     <input type="password" name="pwd" placeholder="Password:">
 
                     <button>Login</button>
+                    <!-- Google login -->
+                    <div class="signup_link"> 
+                        <span>Or</span>
+                        <button class="btn_google_Login" type="button"><img class="btn-image" src="{% static 'user_auth/g-logo.png' %}" alt="G"><a href = "{% provider_login_url 'google'%}">Login in with Google</a></button>
+                    </div>
                 </form>
                 <a href="/register">New User? Click Here</a>
             </div>
