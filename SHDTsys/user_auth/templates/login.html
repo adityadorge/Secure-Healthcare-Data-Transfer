@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Auth</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="box-container">
+            <div class="showcase-container">
+                <img src="{% static 'images/blood-research.png' %}" alt="showcase-1">
+            </div>
+            <div class="login-container">
+                <h3>Login</h3>
+                <form action="{% url 'login'%}" method="POST">
+                    {% csrf_token%}
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" placeholder="Username:">
+
+                    <label for="pwd">Password:</label>
+                    <input type="password" name="pwd" placeholder="Password:">
+
+                    <button>Login</button>
+                </form>
+                <a href="#">New User? Click Here</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
