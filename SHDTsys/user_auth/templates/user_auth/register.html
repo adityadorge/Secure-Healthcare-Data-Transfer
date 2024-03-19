@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Auth</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+    {%if messages%}
+    {% for message in messages %}
+        <div>{{message}}</div>
+    {% endfor %}
+    {%endif%}
+    <div class="main-container">
+        <div class="box-container">
+        <div class="showcase-container">
+            <img src="{% static 'images/blood-research.png' %}" alt="showcase-1">
+        </div>
+        <div class="login-container">
+            <h2>Registration</h2>
+    <form action="{% url 'register' %}" method="POST">
+        {%csrf_token%}
+        {{form.username.help_text}}
+        {{form.username}}
+        <div class="column">
+        {{form.first_name}}
+        {{form.last_name}}
+        </div>
+
+        {{form.email}}
+
+        <div class="column">
+            {{form.password1}}
+            {{form.password2}}
+        </div>
+        {{form.password1.help_text}}
+        <br/>
+        <button type="submit">Register</button>
+    </form>
+    <a href="/login">Old User? Click Here</a>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -12,13 +12,18 @@
 </head>
 
 <body>
+    {%if messages%}
+    {% for message in messages %}
+        <div>{{message}}</div>
+    {% endfor %}
+    {%endif%}
     <div class="main-container">
         <div class="box-container">
             <div class="showcase-container">
                 <img src="{% static 'images/blood-research.png' %}" alt="showcase-1">
             </div>
             <div class="login-container">
-                <h3>Login</h3>
+                <h2>Login</h2>
                 <form action="{% url 'login'%}" method="POST">
                     {% csrf_token%}
                     <label for="username">Username: </label>
@@ -29,7 +34,7 @@
 
                     <button>Login</button>
                 </form>
-                <a href="#">New User? Click Here</a>
+                <a href="/register">New User? Click Here</a>
             </div>
         </div>
     </div>
