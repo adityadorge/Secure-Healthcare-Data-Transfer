@@ -7,3 +7,265 @@
     background-color: #f3f3f3;
 }
 
+
+
+/* LOGIN and REG code */
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100svh;
+    width: 100svw;
+}
+
+.box-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 30px;
+    height: 600px;
+    width: 1000px
+}
+
+.showcase-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 600px;
+    width: 100%;
+    background-color: #e3f2fd;
+    border-radius: 30px 0px 0px 30px;
+}
+
+.showcase-container>img {
+
+    /* min-width: 50svw; */
+    height:auto;
+    width: 600px;
+}
+
+.login-container {
+    width: 400px;
+    display: flex;
+    padding: 50px 60px 50px 50px;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.login-container>form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    width: 100%;
+}
+
+.login-container>form>input {
+    padding: 10px;
+    margin: 10px 0px;
+    border: 1px black solid;
+    border-radius: 10px;
+}
+
+.login-container>form>button,
+.btn-submit {
+    font-size: 16px;
+    margin: 20px 0px;
+    padding: 15px 20px;
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.5s ease;
+}
+
+.login-container>form>button:hover,
+.btn-submit:hover {
+    background-color: #1976d2;
+}
+
+.login-container>a {
+    color: black;
+    text-decoration: none;
+}
+
+.column {
+    display: flex;
+    column-gap: 15px;
+}
+
+.column>input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+    border: 1px black solid;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 500px) {
+    .column {
+        flex-wrap: wrap;
+    }
+}
+
+/* GOOGLE LOGIN */
+
+.btn_google_Login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
+    border: 1px solid black;
+    text-decoration: none;
+    color: #000;
+    background-color: #f8f8f8;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    margin: 10px 0px 10px 0px;
+    width: 100%;
+}
+
+.btn_google_Login:hover {
+    background-color: #e2e1e1;
+}
+
+.btn_google_Login>img {
+    height: 24px;
+    width: 24px;
+}
+
+.signup_link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.google-auth-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
+
+/* SNACKBAR CODE */
+
+body {
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.snackbar {
+    background: #f1f1f1;
+    padding: 20px 60px;
+    position: absolute;
+    top: 50px;
+    border-radius: 8px;
+    box-shadow: 8px 5px 10px rgba(0, 0, 0, 0.3);
+    border-left: solid 6px #3ab164;
+    overflow: hidden;
+    transform: translateY(-200px);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.snackbar.active {
+    transform: translateY(0px);
+}
+
+.content {
+    display: flex;
+    align-items: center;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 20px;
+}
+
+/* svg {
+    width: 35px;
+    height: 35px;
+  } */
+
+.check {
+    background-color: #3ab164;
+    color: #fff;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+.close {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #b13a3a;
+}
+
+.btn-show {
+    padding: 20px 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3ab164;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn-show:hover {
+    background-color: #2e8b57;
+}
+
+.progress {
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #ddd;
+}
+
+.progress::before {
+    content: "";
+    background-color: #3ab164;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.progress.active::before {
+    animation: snackbar 5s linear forwards;
+}
+
+@keyframes snackbar {
+    100% {
+        right: 100%;
+    }
+}
