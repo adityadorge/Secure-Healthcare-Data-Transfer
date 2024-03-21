@@ -11,18 +11,13 @@
             <h2>Registration</h2>
             <form action="{% url 'register' %}" method="POST">
                 {%csrf_token%}
-                {{form.username}}
-                <div class="column">
-                    {{form.first_name}}
-                    {{form.last_name}}
-                </div>
-
                 {{form.email}}
 
-                <div class="column">
-                    {{form.password1}}
-                    {{form.password2}}
-                </div>
+                {{form.name}}
+
+                {{form.password1}}
+
+                {{form.password2}}
                 <br />
                 <button type="submit">Register</button>
             </form>

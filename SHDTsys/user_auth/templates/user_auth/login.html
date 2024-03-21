@@ -11,10 +11,8 @@
                 <h2>Login</h2>
                 <form action="{% url 'login'%}" method="POST">
                     {% csrf_token%}
-                    <label for="username">Username: </label>
-                    <input type="text" name="username" placeholder="Username:">
+                    <input type="email" name="email" placeholder="E-mail:">
 
-                    <label for="pwd">Password:</label>
                     <input type="password" name="pwd" placeholder="Password:">
 
                     <button>Login</button>

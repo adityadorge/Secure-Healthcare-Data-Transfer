@@ -11,9 +11,9 @@ def home(request):
 
 def login_user(request):
     if request.method == 'POST':
-        username = request.POST['username']
+        email = request.POST['email']
         pwd = request.POST['pwd']
-        user = authenticate(request, username=username, password=pwd)
+        user = authenticate(request, email=email, password=pwd)
         if user is not None:
             login(request, user)
             messages.success(request, ("Login success"))
@@ -35,10 +35,10 @@ def register_user(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
             password = form.cleaned_data['password1']
             # log in user
-            user = authenticate(username=username, password=password)
+            user = authenticate(email=email, password=password)
             login(request, user)
             messages.success(request, ("Account Created"))
             return redirect('home')
