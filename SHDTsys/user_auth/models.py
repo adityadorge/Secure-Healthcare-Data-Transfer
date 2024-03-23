@@ -1,7 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 
+def max_file_size(value):
+    if value.size > 204800:
+        raise ValidationError("File size must be less than 200 KB")
 
 class UserManager(BaseUserManager):
     def _create_user(self, email, password, is_staff, is_superuser, **extra_fields):
@@ -46,3 +50,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_absolute_url(self):
         return "/user_auth/%i/" % (self.pk)
+    
+class UserDetail(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    profile_picture = models.ImageField(upload_to='profile_pics/', blank=True)
+    phone_number = models.CharField(max_length=20, blank = True)
+    date_of_birth = models.DateField(blank=True,null=True)
+    city = models.CharField(max_length=50, blank=True)
+    state = models.CharField(max_length=50, blank=True)
+    role = models.CharField(max_length=50, default="patient")

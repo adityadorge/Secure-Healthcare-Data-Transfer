@@ -11,9 +11,9 @@
             <h2>Registration</h2>
             <form action="{% url 'register' %}" method="POST">
                 {%csrf_token%}
-                {{form.email}}
-
                 {{form.name}}
+                
+                {{form.email}}
 
                 {{form.password1}}
 
