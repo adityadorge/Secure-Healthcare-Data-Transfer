@@ -1,7 +1,7 @@
 # from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .models import User
+from .models import User, UserDetail
 
 
 # class SignUpForm(UserCreationForm):
@@ -48,3 +48,12 @@ class SignUpForm(UserCreationForm):
         super(SignUpForm, self).__init__(*args, **kwargs)
         self.fields['password1'].widget.attrs['placeholder'] = 'Password'
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
+
+class UserDetailsForm(forms.ModelForm):
+    date_of_birth = forms.DateField(widget=forms.DateInput(attrs={'type':'date'}))
+    name = forms.CharField(max_length=100)
+    
+    class Meta:
+        model = UserDetail
+        fields = ('phone_number', 'date_of_birth', 'city', 'state', 'role', 'profile_picture')
+        labels={'profile_picture':""}

@@ -1,0 +1,46 @@
+{% extends '../base.html' %}
+{% block content %}
+{% load static %}
+<div class="main-container">
+    {% if form.errors %}
+    <ul class="error_list">
+        {% for error in form.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div>
+        
+        <form action="{% url 'user_detail' %}" method="POST" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div class="profile-container">
+                <div class="form-page">
+                    <h2>User Details Form</h2>
+                    <label for="name">Name:</label>
+                    {{form.name}}
+
+                    <label for="phone_number">Phone Number: </label>
+                    {{form.phone_number}}
+                    <label for="date_of_birth">Date Of Birth: </label>
+                    {{form.date_of_birth}}
+                    <label for="city">City:</label>
+                    {{form.city}}
+                    <label for="state">State:</label>
+                    {{form.state}}
+                    <br />
+                    <button type="submit">Submit</button>
+                </div>
+                <div class="profile-div">
+                    {% if form.profile_picture.value.url != null %}
+                    <img class="profile-pic" src="{{form.profile_picture.value.url}}" alt="profile_picture">
+                    {% else %}
+                    <img class="profile-pic" src="{% static 'images/default_profile_picture.jpg' %}"
+                        alt="profile_picture">
+                    {% endif %}
+                    {{form.profile_picture}}
+                </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
