@@ -51,8 +51,9 @@ class SignUpForm(UserCreationForm):
 
 class UserDetailsForm(forms.ModelForm):
     date_of_birth = forms.DateField(widget=forms.DateInput(attrs={'type':'date'}))
-    name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+    name = forms.CharField(max_length=100)
     
     class Meta:
         model = UserDetail
         fields = ('phone_number', 'date_of_birth', 'city', 'state', 'role', 'profile_picture')
+        labels={'profile_picture':""}

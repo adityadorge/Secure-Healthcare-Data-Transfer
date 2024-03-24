@@ -55,6 +55,7 @@ def register_user(request):
 
 
 def user_detail(request):
+    user = request.user
     user_name = request.user.name
     user_details = UserDetail.objects.filter(user=request.user).first()
     form = UserDetailsForm(initial={'name': user_name} ,instance=user_details) # Pre-populate with existing details (if any)
@@ -63,6 +64,9 @@ def user_detail(request):
         if form.is_valid():
             form.instance.user = request.user 
             form.save()
+            if 'name' in form.cleaned_data:
+                user.name = form.cleaned_data['name']
+                user.save()
             messages.success(request, ("Form submitted successfully"))
             return redirect('home')
         else:

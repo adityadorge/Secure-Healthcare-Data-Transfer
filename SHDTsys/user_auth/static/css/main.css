@@ -250,6 +250,52 @@ body {
     animation: snackbar 5s linear forwards;
 }
 
+/* PROFILE SETTINGS PAGE */
+.profile-container{
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.profile-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-pic{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.form-page{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.form-page>input{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.form-page>button{
+    background-color: #2196f3;
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    color: #e3f2fd;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.5s ease;
+}
+
 @keyframes snackbar {
     100% {
         right: 100%;
