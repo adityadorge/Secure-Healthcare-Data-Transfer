@@ -155,6 +155,7 @@ nav ul li:hover ul.dropdown {
     justify-content: center;
     height: 100svh;
     width: 100svw;
+    margin-top: 50px;
 }
 
 .box-container {
@@ -385,6 +386,11 @@ nav ul li:hover ul.dropdown {
 }
 
 /* PROFILE SETTINGS PAGE */
+
+.form-spacing{
+    margin-top: 50px;
+}
+
 .profile-container {
     display: grid;
     gap: 50px;

@@ -55,5 +55,5 @@ class UserDetailsForm(forms.ModelForm):
     
     class Meta:
         model = UserDetail
-        fields = ('phone_number', 'date_of_birth', 'city', 'state', 'role', 'profile_picture')
+        fields = ('phone_number', 'date_of_birth', 'city', 'state','profile_picture')
         labels={'profile_picture':""}

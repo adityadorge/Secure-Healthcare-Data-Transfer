@@ -61,6 +61,8 @@ def user_detail(request):
     form = UserDetailsForm(initial={'name': user_name} ,instance=user_details) # Pre-populate with existing details (if any)
     if request.method == 'POST':
         form = UserDetailsForm(request.POST, request.FILES, instance=user_details)
+        print(request.POST)
+        print(form.errors)
         if form.is_valid():
             form.instance.user = request.user 
             form.save()
@@ -70,7 +72,7 @@ def user_detail(request):
             messages.success(request, ("Form submitted successfully"))
             return redirect('home')
         else:
-            messages.error(request, ("Error please try again later"))
+            messages.error(request, (f"Error: {form.errors} "))
             return render(request, 'user_details/user_details_form.html', {'form': form})
     else:
         return render(request, 'user_details/user_details_form.html', {'form': form})
