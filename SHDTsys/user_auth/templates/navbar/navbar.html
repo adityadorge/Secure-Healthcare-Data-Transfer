@@ -1,6 +1,6 @@
 {% load static %}
 <!-- SIDEBAR -->
-<section id="sidebar">
+<section class= "hide" id="sidebar">
     <a href="#" class="brand">
         <i class="bx bx-plus-medical"></i>
         <span class="text">SHDT</span>
@@ -72,7 +72,7 @@
         <label for="switch-mode" class="switch-mode"></label>{% endcomment %}
         <a href="#" class="notification">
             <i class="bx bxs-bell"></i>
-            <span class="num">8</span>
+            <span class="num"></span>
         </a> 
         {% if user.is_authenticated %}
         <a href="{% url 'user_detail' %}" class="profile">

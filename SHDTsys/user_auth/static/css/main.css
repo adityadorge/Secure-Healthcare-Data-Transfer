@@ -2,7 +2,19 @@
     box-sizing: border-box;
     font-family: sans-serif;
     font-size: 16px;
-    background-color: #f3f3f3;
+    background-color: #f9f9f9;
+    --white:#fff;
+    --light: #f9f9f9;
+    --blue: #3c91e6;
+    --light-blue: #cfe8ff;
+    --grey: #eee;
+    --dark-grey: #aaaaaa;
+    --dark: #342e37;
+    --red: #db504a;
+    --yellow: #ffce26;
+    --light-yellow: #fff2c6;
+    --orange: #fd7238;
+    --light-orange: #ffe0d3;
 }
 
 * {
@@ -155,7 +167,7 @@ nav ul li:hover ul.dropdown {
     justify-content: center;
     height: 100svh;
     width: 100svw;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .box-container {
@@ -460,23 +472,6 @@ nav ul li:hover ul.dropdown {
 
 /* NAVBAR + sidebar */
 
-:root {
-    --poppins: "Poppins", sans-serif;
-    --lato: "Lato", sans-serif;
-
-    --light: #f9f9f9;
-    --blue: #3c91e6;
-    --light-blue: #cfe8ff;
-    --grey: #eee;
-    --dark-grey: #aaaaaa;
-    --dark: #342e37;
-    --red: #db504a;
-    --yellow: #ffce26;
-    --light-yellow: #fff2c6;
-    --orange: #fd7238;
-    --light-orange: #ffe0d3;
-}
-
 html {
     overflow-x: hidden;
 }
@@ -499,9 +494,8 @@ body {
     left: 0;
     width: 200px;
     height: 100%;
-    background: var(--light);
+    background: var(--white);
     z-index: 2000;
-    font-family: var(--lato);
     transition: 0.3s ease;
     overflow-x: hidden;
     scrollbar-width: none;
@@ -525,7 +519,7 @@ body {
     position: sticky;
     top: 0;
     left: 0;
-    background: var(--light);
+    background: var(--white);
     z-index: 500;
     padding-bottom: 20px;
     box-sizing: content-box;
@@ -535,6 +529,10 @@ body {
     min-width: 60px;
     display: flex;
     justify-content: center;
+}
+
+.bx{
+    font-size: 24px;
 }
 
 #sidebar .side-menu {
@@ -583,7 +581,7 @@ body {
 #sidebar .side-menu li a {
     width: 100%;
     height: 100%;
-    background: var(--light);
+    background: var(--white);
     display: flex;
     align-items: center;
     border-radius: 48px;
@@ -598,7 +596,7 @@ body {
 }
 
 #sidebar.hide .side-menu li a {
-    width: calc(48px - (4px * 2));
+    width: calc(58px - (4px * 2));
     transition: width 0.3s ease;
 }
 
@@ -611,7 +609,7 @@ body {
 }
 
 #sidebar .side-menu li a .bx {
-    min-width: calc(60px - ((4px + 6px) * 2));
+    min-width: calc(70px - ((4px + 6px) * 2));
     display: flex;
     justify-content: center;
 }
@@ -634,7 +632,7 @@ body {
 /* NAVBAR */
 #content nav {
     height: 56px;
-    background: var(--light);
+    background: var(--white);
     padding: 0 24px;
     display: flex;
     align-items: center;
@@ -654,7 +652,7 @@ body {
     bottom: -40px;
     left: 0;
     border-radius: 50%;
-    box-shadow: -20px -20px 0 var(--light);
+    box-shadow: -20px -20px 0 var(--white);
 }
 
 #content nav a {
@@ -706,7 +704,7 @@ body {
     justify-content: center;
     align-items: center;
     background: var(--blue);
-    color: var(--light);
+    color: var(--white);
     font-size: 18px;
     border: none;
     outline: none;
@@ -723,12 +721,12 @@ body {
     position: absolute;
     top: -6px;
     right: -6px;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    border: 2px solid var(--light);
+    border: 2px solid var(--white);
     background: var(--red);
-    color: var(--light);
+    color: var(--white);
     font-weight: 700;
     font-size: 12px;
     display: flex;
@@ -820,7 +818,7 @@ body {
     padding: 0 16px;
     border-radius: 36px;
     background: var(--blue);
-    color: var(--light);
+    color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -837,7 +835,7 @@ body {
 
 #content main .box-info li {
     padding: 24px;
-    background: var(--light);
+    background: var(--white);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -890,7 +888,7 @@ body {
 
 #content main .table-data>div {
     border-radius: 20px;
-    background: var(--light);
+    background: var(--white);
     padding: 24px;
     overflow-x: auto;
 }
@@ -954,7 +952,7 @@ body {
 #content main .table-data .order table tr td .status {
     font-size: 10px;
     padding: 6px 16px;
-    color: var(--light);
+    color: var(--white);
     border-radius: 20px;
     font-weight: 700;
 }
@@ -1047,7 +1045,7 @@ body {
         width: 36px;
         height: 100%;
         border-radius: 0 36px 36px 0;
-        color: var(--light);
+        color: var(--white);
         background: var(--red);
     }
 
