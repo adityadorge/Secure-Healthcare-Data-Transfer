@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'user_auth',
+    'patients',
     # all auth configurations
     'allauth',
     'allauth.account',
