@@ -41,6 +41,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     last_login = models.DateTimeField(null=True, blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
+    role = models.CharField(max_length=50, default="patient")
 
     USERNAME_FIELD = 'email'
     EMAIL_FIELD = 'email'
@@ -51,11 +52,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_absolute_url(self):
         return "/user_auth/%i/" % (self.pk)
     
-class UserDetail(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    profile_picture = models.ImageField(upload_to='profile_pics/', blank=True)
-    phone_number = models.CharField(max_length=20, blank = True)
-    date_of_birth = models.DateField(blank=True,null=True)
-    city = models.CharField(max_length=50, blank=True)
-    state = models.CharField(max_length=50, blank=True)
-    role = models.CharField(max_length=50, default="patient")
+# class UserDetail(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+#     profile_picture = models.ImageField(upload_to='profile_pics/', blank=True)
+#     phone_number = models.CharField(max_length=20, blank = True)
+#     date_of_birth = models.DateField(blank=True,null=True)
+#     city = models.CharField(max_length=50, blank=True)
+#     state = models.CharField(max_length=50, blank=True)
+#     role = models.CharField(max_length=50, default="patient")
