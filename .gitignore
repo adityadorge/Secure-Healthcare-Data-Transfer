@@ -11,3 +11,6 @@ db.sqlite3-journal
 media/
 # cache files
 __pycache__/
+
+# TMP files
+*.drawio.bkp
