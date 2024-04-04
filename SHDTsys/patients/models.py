@@ -36,6 +36,7 @@ class Patient_medical_history(models.Model):
     procedure_report = models.FileField(null=True, blank=True)
 
     # Social History
+
     smoking_status = models.CharField(max_length=20, blank=True, choices=SEVERITY_CHOICES, default='Not Defined')
     alcohol_status = models.CharField(max_length=20, blank=True, choices=SEVERITY_CHOICES, default='Not Defined')
     illegal_items_status = models.CharField(max_length=20, blank=True, choices=SEVERITY_CHOICES, default='Not Defined')
