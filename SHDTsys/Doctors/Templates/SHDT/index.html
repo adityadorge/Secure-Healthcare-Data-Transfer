@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- My CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>SHDT</title>
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+      <a href="#" class="brand">
+        <i class="bx bxs-smile"></i>
+        <span class="text">SHDT</span>
+      </a>
+      <ul class="side-menu top">
+        <li class="active">
+          <a href="#">
+            <i class="bx bxs-dashboard"></i>
+            <span class="text">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bxs-shopping-bag-alt"></i>
+            <span class="text">My Store</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bxs-doughnut-chart"></i>
+            <span class="text">Analytics</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bxs-message-dots"></i>
+            <span class="text">Message</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bxs-group"></i>
+            <span class="text">Team</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="side-menu">
+        <li>
+          <a href="#">
+            <i class="bx bxs-cog"></i>
+            <span class="text">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="logout">
+            <i class="bx bxs-log-out-circle"></i>
+            <span class="text">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- SIDEBAR -->
+
+    <!-- CONTENT -->
+    <section id="content">
+      <!-- NAVBAR -->
+      <nav>
+        <i class="bx bx-menu"></i>
+        <a href="#" class="nav-link">Categories</a>
+        <form action="#">
+          <div class="form-input">
+            <input type="search" placeholder="Search..." />
+            <button type="submit" class="search-btn">
+              <i class="bx bx-search"></i>
+            </button>
+          </div>
+        </form>
+        <a href="#" class="notification">
+          <i class="bx bxs-bell"></i>
+          <span class="num"></span>
+        </a>
+        <a href="#" class="profile">
+          <img
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          />
+        </a>
+      </nav>
+      <!-- NAVBAR -->
+    </section>
+    <!-- CONTENT -->
+
+    <!-- Dashboard -->
+    <section id="dashboard">
+      <div class="task item">
+        <div class="task-title">
+          <h1 class="title">ToDos</h1>
+          <button><i class="bx bx-plus bx-sm"></i></button>
+        </div>
+        <div class="task-list">
+          <p class="taskactive">Incomplete</p>
+          <p>Completed</p>
+        </div>
+        <div class="line"></div>
+        <div>
+          <ul class="task-lists">
+            <li><input type="checkbox" name="" id="" />Task 1</li>
+            <li><input type="checkbox" name="" id="" />Task 2</li>
+            <li><input type="checkbox" name="" id="" />Task 3</li>
+            <li><input type="checkbox" name="" id="" />Task 4</li>
+            <li><input type="checkbox" name="" id="" />Task 5</li>
+            <li><input type="checkbox" name="" id="" />Task 6</li>
+            <li><input type="checkbox" name="" id="" />Task 7</li>
+            <li><input type="checkbox" name="" id="" />Task 8</li>
+            <li><input type="checkbox" name="" id="" />Task 9</li>
+            <li><input type="checkbox" name="" id="" />Task 10</li>
+          </ul>
+        </div>
+      </div>
+      <div class="activity item">
+        <h1 class="dash-title">Activity</h1>
+        <div class="line"></div>
+        <div class="chart">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      <div class="log item">
+        <h3>Recent Patients</h3>
+        <div class="line"></div>
+        <div id="tableContainer">
+          <table class="recent">
+            <thead>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Weight</th>
+              <th>Disease</th>
+              <th>Date</th>
+              <th>Heart Rate</th>
+              <th>Blood Type</th>
+              <th>Status</th>
+            </thead>
+            <tbody id="recentBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="profileDash item">
+        <a href="#" class="profile_img">
+          <img
+            src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D"
+          />
+        </a>
+        <div class="profile-info">
+          <h2>Dr. Pranav Dalvi</h2>
+          <p>Surgen-Dalvi Hospital</p>
+        </div>
+        <div class="profile-add">
+          <p>Dalvi Hospital, Dadar, Mumbai-400004</p>
+        </div>
+        <div class="icons">
+          <button type="button" class="profile-msg">
+            <i class="bx bxs-message-rounded bx-md"></i>Chat
+          </button>
+          <button type="button" class="profile-msg">
+            <i class="bx bxs-pencil bx-md"></i>Edit
+          </button>
+        </div>
+        <div class="profile-count">
+          <div class="consult">
+            <p>2000</p>
+            <p>Total Consultation</p>
+          </div>
+          <div class="patients">
+            <p>2000</p>
+            <p>Total Patients</p>
+          </div>
+        </div>
+        <div class="profile-events">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+          commodi laboriosam iusto maiores hic voluptas similique, adipisci
+          dolorum, aliquid quae numquam quos. Harum tempora qui voluptatem fuga
+          aperiam tenetur dolores repellendus accusantium quisquam voluptate,
+          illum ut a eius neque rem. Veritatis, voluptate possimus? Reiciendis,
+          cumque. Fugiat magnam corporis deserunt distinctio explicabo beatae,
+          voluptas dolores. Amet et mollitia repudiandae est laudantium
+          exercitationem consectetur vel magnam praesentium necessitatibus
+          beatae, adipisci, nobis earum odio voluptate provident eveniet,
+          commodi facere aperiam placeat numquam aut. Molestiae, distinctio vel!
+          Sequi assumenda nemo a temporibus, odio ea sapiente architecto.
+          Architecto doloremque blanditiis qui nemo consequatur nulla in.
+        </div>
+      </div>
+    </section>
+    <!-- Dashboard -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
