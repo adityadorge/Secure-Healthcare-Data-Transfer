@@ -5,9 +5,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from .forms import SignUpForm
-# , UserDetailsForm
-# from .models import UserDetail
-
 
 def home(request):
     return render(request, 'home.html', {})
@@ -52,7 +49,7 @@ def register_user(request):
             messages.error(request, ("Error please try again later"))
             return redirect('register')
     else:
-        return render(request, 'user_auth/register.html', {'form': form})
+        return render(request, 'registration/register.html', {'form': form})
 
 
 # def user_detail(request):

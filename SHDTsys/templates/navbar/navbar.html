@@ -7,7 +7,7 @@
     </a>
     <ul class="side-menu top">
         <li class="active">
-            <a href="{% url 'home' %}">
+            <a href="#">
                 <i class="bx bxs-dashboard"></i>
                 <span class="text">Dashboard</span>
             </a>
@@ -45,7 +45,7 @@
             </a>
         </li>
         <li>
-            <a href="{%url 'logout'%}" class="logout">
+            <a href="{%url 'account_logout'%}" class="logout">
                 <i class="bx bxs-log-out-circle"></i>
                 <span class="text">Logout</span>
             </a>
@@ -75,7 +75,7 @@
             <span class="num"></span>
         </a> 
         {% if user.is_authenticated %}
-        <a href="{% url 'user_detail' %}" class="profile">
+        <a href="#" class="profile">
             {% if user.userdetail.profile_picture %}
             <img src="{{user.userdetail.profile_picture.url}}" alt="Profile"/>
             {%else%}
@@ -83,7 +83,7 @@
             {%endif%}
         </a>
         {% else %}
-        <a class="hideOnMobile" href="/login/">Login / Register</a>
+        <a class="hideOnMobile" href="/accounts/login/">Login / Register</a>
         {% endif%}
     </nav>
     <!-- NAVBAR -->
