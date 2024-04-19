@@ -10,9 +10,10 @@
                 <h2>Login</h2>
                 <form method="POST">
                     {% csrf_token%}
-                    <input type="email" name="email" placeholder="E-mail:">
-
-                    <input type="password" name="pwd" placeholder="Password:">
+                    {{form.login}}
+                    {{form.password}}
+                    <a href="/accounts/password/reset/">Forgot your password?</a>
+                    <p>Remember Me: {{form.remember}}</p>
 
                     <button>Login</button>
                 </form>
@@ -21,7 +22,7 @@
                     <span>Or</span>
                     <a class="btn_google_Login" href = "{% provider_login_url 'google'%}"> <img src="{% static 'images/g-logo.png' %}" alt="G" srcset=""> Login in with Google</a>
                 </div>
-                <a href="/register">New User? Click Here</a>
+                <a href="/accounts/signup/">New User? Click Here</a>
             </div>
         </div>
     {% endblock %}
