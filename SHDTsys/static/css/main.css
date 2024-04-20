@@ -22,17 +22,19 @@
     padding: 0;
 }
 
-body {
-    height: 100vh;
+body.dark {
+    --light: #0c0c1e;
+    --grey: #060714;
+    --dark: #fbfbfb;
 }
 
-a {
-    text-decoration: none;
-  }
-  
-  li {
+body {
+    background: var(--grey);
+    height: 100vh;
+}
+li {
     list-style: none;
-  }
+}
 
 /* main{
     margin-top: 3rem;
@@ -165,9 +167,7 @@ nav ul li:hover ul.dropdown {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100svh;
-    width: 100svw;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .box-container {
@@ -181,6 +181,11 @@ nav ul li:hover ul.dropdown {
     border-radius: 30px;
     height: 600px;
     width: 1000px
+}
+.box{
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .showcase-container {
@@ -206,6 +211,9 @@ nav ul li:hover ul.dropdown {
     padding: 50px 60px 50px 50px;
     flex-direction: column;
     align-items: center;
+}
+.login-container > h1{
+    margin-bottom: 20px;
 }
 
 .login-container>form {
@@ -240,6 +248,17 @@ nav ul li:hover ul.dropdown {
 .login-container>form>button:hover,
 .btn-submit:hover {
     background-color: #1976d2;
+}
+
+.link-btn{
+    margin-top:20px;
+    padding: 10px;
+    background-color: #2196f3;
+    color: #f1f7fc !important;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+
 }
 
 .login-container>a {
@@ -472,21 +491,6 @@ nav ul li:hover ul.dropdown {
 
 /* NAVBAR + sidebar */
 
-html {
-    overflow-x: hidden;
-}
-
-body.dark {
-    --light: #0c0c1e;
-    --grey: #060714;
-    --dark: #fbfbfb;
-}
-
-body {
-    background: var(--grey);
-    overflow-x: hidden;
-}
-
 /* SIDEBAR */
 #sidebar {
     position: fixed;
@@ -523,6 +527,7 @@ body {
     z-index: 500;
     padding-bottom: 20px;
     box-sizing: content-box;
+    text-decoration: none;
 }
 
 #sidebar .brand .bx {
@@ -589,6 +594,7 @@ body {
     color: var(--dark);
     white-space: nowrap;
     overflow-x: hidden;
+    text-decoration: none;
 }
 
 #sidebar .side-menu.top li.active a {
@@ -657,6 +663,7 @@ body {
 
 #content nav a {
     color: var(--dark);
+    text-decoration: none;
 }
 
 #content nav .bx.bx-menu {
