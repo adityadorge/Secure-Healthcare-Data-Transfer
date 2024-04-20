@@ -178,3 +178,5 @@ EMAIL_USE_TLS = True
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+ACCOUNT_ADAPTER = "user_auth.custom_adapter.CustomAccountAdapter"
