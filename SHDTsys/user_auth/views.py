@@ -10,48 +10,6 @@ def home(request):
     return render(request, 'home.html', {})
 
 
-def login_user(request):
-    if request.method == 'POST':
-        email = request.POST['email']
-        pwd = request.POST['pwd']
-        user = authenticate(request, email=email, password=pwd)
-        if user is not None:
-            login(request, user)
-            messages.success(request, ("Login success"))
-            return redirect('home')
-        else:
-            messages.error(request, ("There was error please try again"))
-            return redirect('login')
-    else:
-        return render(request, 'user_auth/login.html', {})
-
-
-def logout_user(request):
-    logout(request)
-    messages.success(request, ("You are logged out!"))
-    return redirect('login')
-
-
-def register_user(request):
-    form = SignUpForm()
-    if request.method == "POST":
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password1']
-            # log in user
-            user = authenticate(email=email, password=password)
-            login(request, user)
-            messages.success(request, ("Account Created"))
-            return redirect('home')
-        else:
-            messages.error(request, ("Error please try again later"))
-            return redirect('register')
-    else:
-        return render(request, 'registration/register.html', {'form': form})
-
-
 # def user_detail(request):
 #     user = request.user
 #     user_name = request.user.name
