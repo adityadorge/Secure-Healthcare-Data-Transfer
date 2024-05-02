@@ -2,6 +2,7 @@
 {% block content %}
 {% load socialaccount %}
 {% load static %}
+
         <div class="box-container">
             <div class="showcase-container">
                 <img src="{% static 'images/blood-research.png' %}" alt="showcase-1">
@@ -20,7 +21,7 @@
                 <!-- Google login -->
                 <div class="signup_link"> 
                     <span>Or</span>
-                    <a class="btn_google_Login" href = "{% provider_login_url 'google'%}"> <img src="{% static 'images/g-logo.png' %}" alt="G" srcset=""> Login in with Google</a>
+                    {% comment %} <a class="btn_google_Login" href = "{% provider_login_url 'google'%}"> <img src="{% static 'images/g-logo.png' %}" alt="G" srcset=""> Login in with Google</a> {% endcomment %}
                 </div>
                 <a href="/accounts/signup/">New User? Click Here</a>
             </div>
