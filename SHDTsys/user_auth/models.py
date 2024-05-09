@@ -51,7 +51,16 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_absolute_url(self):
         return "/user_auth/%i/" % (self.pk)
-    
+
+class OTP(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    otp_secrete = models.CharField(max_length=16)
+    email = models.EmailField(unique=True)
+    is_verified = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.email
+  
 # class UserDetail(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 #     profile_picture = models.ImageField(upload_to='profile_pics/', blank=True)

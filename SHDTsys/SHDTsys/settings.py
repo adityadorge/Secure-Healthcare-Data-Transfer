@@ -46,17 +46,10 @@ INSTALLED_APPS = [
 
     # allauth configurations
     'allauth',
+    'allauth.mfa',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-
-    # django-otp configurations
-    'django_otp',
-    'django_otp.plugins.otp_totp',
-    'django_otp.plugins.otp_static',
-
-    # two-factor auth configurations
-    'allauth_2fa',
 ]
 
 
@@ -87,12 +80,6 @@ MIDDLEWARE = [
     
     # allauth middleware
     'allauth.account.middleware.AccountMiddleware',
-
-    # django_otp middleware
-    'django_otp.middleware.OTPMiddleware',
-
-    # two-factor-middleware
-    'allauth_2fa.middleware.AllauthTwoFactorMiddleware',
 ]
 
 ROOT_URLCONF = 'SHDTsys.urls'
@@ -196,5 +183,6 @@ EMAIL_USE_TLS = True
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-ACCOUNT_ADAPTER = "allauth_2fa.adapter.OTPAdapter"
-# ACCOUNT_ADAPTER = "user_auth.custom_adapter.CustomAccountAdapter"
+ACCOUNT_ADAPTER = "user_auth.custom_adapter.CustomAccountAdapter"
+MFA_ADAPTER = "allauth.mfa.adapter.DefaultMFAAdapter"
+
