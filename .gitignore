@@ -2,7 +2,7 @@
 EHR/
 shdt_env/
 shdt-env/
-
+SHDT-env/
 .env
 
 # DB files
@@ -14,3 +14,6 @@ __pycache__/
 
 # TMP files
 *.drawio.bkp
+
+#Documentation
+Documentation/

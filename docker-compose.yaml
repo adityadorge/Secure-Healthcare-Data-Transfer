@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    environment:
+      - CLIENT_ID=${CLIENT_ID}
+      - CLIENT_SECRET= ${CLIENT_SECRET}
+      - MAIL=${MAIL}
+      - APP_PASSWORD=${APP_PASSWORD}
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+  # secrets:
+    #   - my_secret
+# secrets:
+#   my_secret:
+#     file: .env
+    #external: true
