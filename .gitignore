@@ -1,5 +1,7 @@
 # VENV dirs
 SHDT-env/
+/SHDT-env
+SHDT-env
 .env
 
 # DB files
