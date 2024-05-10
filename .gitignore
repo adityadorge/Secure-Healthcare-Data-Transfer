@@ -2,7 +2,7 @@
 EHR/
 shdt_env/
 shdt-env/
-SHDT-env/
+/SHDT-env
 .env
 
 # DB files
