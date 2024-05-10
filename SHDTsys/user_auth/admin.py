@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.admin.views.decorators import staff_member_required
 from .models import User
-from .models import OTP
 
 class UserAdmin(BaseUserAdmin):
     fieldsets = (
@@ -37,4 +36,3 @@ admin.site.login = staff_member_required(admin.site.login, login_url='/accounts/
 admin.autodiscover()
 
 admin.site.register(User, UserAdmin)
-admin.site.register(OTP)
