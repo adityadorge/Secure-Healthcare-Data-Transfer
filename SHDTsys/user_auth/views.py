@@ -6,7 +6,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
 
 
-
 def home(request):
     return render(request, 'home.html', {})
 
