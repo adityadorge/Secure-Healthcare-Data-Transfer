@@ -20,8 +20,9 @@
   <body>
     {% include "./navbar/navbar.html" %}
     <div class="main-container">
-      {% if form.errors %} {% for field in form %} {% for error in field.errors
-      %}
+      {% if form.errors %} 
+      {% for field in form %} 
+      {% for error in field.errors%}
       <div class="snackbar">
         <div class="content">
           <svg
@@ -52,7 +53,9 @@
           <div class="progress"></div>
         </div>
       </div>
-      {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+      {% endfor %} 
+      {% endfor %} 
+      {% for error in form.non_field_errors %}
 
       <div class="snackbar">
         <div class="content">
@@ -84,7 +87,10 @@
           <div class="progress"></div>
         </div>
       </div>
-      {% endfor %} {% endif %} {%if messages%} {% for message in messages %}
+      {% endfor %} 
+      {% endif %} 
+      {%if messages%} 
+      {% for message in messages %}
       <div class="snackbar">
         <div class="content">
           <svg
@@ -115,7 +121,10 @@
           <div class="progress"></div>
         </div>
       </div>
-      {% endfor %} {%endif%} {%if form.errors%} {% for message in form.errors %}
+      {% endfor %} 
+      {%endif%} 
+      {%if form.errors%} 
+      {% for message in form.errors %}
       <div class="snackbar">
         <div class="content">
           <svg
@@ -146,7 +155,8 @@
           <div class="progress"></div>
         </div>
       </div>
-      {% endfor %} {%endif%}
+      {% endfor %} 
+      {%endif%}
 
       <main>{% block content %} {% endblock%}</main>
     </div>
