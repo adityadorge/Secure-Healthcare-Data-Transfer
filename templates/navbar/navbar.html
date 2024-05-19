@@ -1,53 +1,45 @@
 {% load static %}
 <!-- SIDEBAR -->
-<section class= "hide" id="sidebar">
+<section class="hide" id="sidebar">
     <a href="#" class="brand">
-        <i class="bx bx-plus-medical"></i>
+        <i class="ri ri-service-fill"></i>
         <span class="text">SHDT</span>
     </a>
     <ul class="side-menu top">
         <li class="active">
             <a href="#">
-                <i class="bx bxs-dashboard"></i>
+                <i class="ri ri-dashboard-fill"></i>
                 <span class="text">Dashboard</span>
             </a>
         </li>
         <li>
             <a href="#">
-                <i class="bx bxs-shopping-bag-alt"></i>
-                <span class="text">My Store</span>
+                <i class="ri ri-file-chart-fill"></i>
+                <span class="text">Lab Reports</span>
             </a>
         </li>
         <li>
             <a href="#">
-                <i class="bx bxs-doughnut-chart"></i>
-                <span class="text">Analytics</span>
+                <i class="ri ri-history-fill"></i>
+                <span class="text">Medical History</span>
             </a>
         </li>
         <li>
             <a href="#">
-                <i class="bx bxs-message-dots"></i>
-                <span class="text">Message</span>
+                <i class="ri ri-medicine-bottle-fill"></i>
+                <span class="text">Vaccinations</span>
             </a>
         </li>
         <li>
             <a href="#">
-                <i class="bx bxs-group"></i>
-                <span class="text">Team</span>
+                <i class="ri ri-virus-fill"></i>
+                <span class="text">Disease</span>
             </a>
         </li>
-    </ul>
-    <ul class="side-menu">
         <li>
             <a href="#">
-                <i class="bx bxs-cog"></i>
-                <span class="text">Settings</span>
-            </a>
-        </li>
-        <li>
-            <a href="{%url 'account_logout'%}" class="logout">
-                <i class="bx bxs-log-out-circle"></i>
-                <span class="text">Logout</span>
+                <i class="ri ri-capsule-fill"></i>
+                <span class="text">medication</span>
             </a>
         </li>
     </ul>
@@ -58,26 +50,23 @@
 <section id="content">
     <!-- NAVBAR -->
     <nav>
-        <i class="bx bx-menu"></i>
-        <a href="#" class="nav-link">Categories</a>
+        <i class="ri ri-menu-line"></i>
         <form action="#">
             <div class="form-input">
                 <input type="search" placeholder="Search..." />
                 <button type="submit" class="search-btn">
-                    <i class="bx bx-search"></i>
+                    <i class="ri ri-search-2-line"></i>
                 </button>
             </div>
         </form>
-        {% comment %} <input type="checkbox" id="switch-mode" hidden />
-        <label for="switch-mode" class="switch-mode"></label>{% endcomment %}
         <a href="#" class="notification">
-            <i class="bx bxs-bell"></i>
+            <i class="ri ri-notification-2-fill"></i>
             <span class="num"></span>
-        </a> 
+        </a>
         {% if user.is_authenticated %}
-        <a href="#" class="profile">
+        <a id="toggleBtn" href="#" class="profile">
             {% if user.userdetail.profile_picture %}
-            <img src="{{user.userdetail.profile_picture.url}}" alt="Profile"/>
+            <img src="{{user.userdetail.profile_picture.url}}" alt="Profile" />
             {%else%}
             <img src="{% static 'images/default_profile_picture.jpg' %}" alt="Profile">
             {%endif%}
@@ -89,6 +78,23 @@
     <!-- NAVBAR -->
 </section>
 <!-- CONTENT -->
+<section id="right-sidebar" class="right-sidebar rs-hide">
+    <h3>Profile Settings</h3>
+    <div class="profile-links-container">
+    <ul class="profile-links">
+        <li><a href="#"><i class="ri ri-image-circle-line"></i>  Profile Image</a></li>
+        <li><a href={%url 'account_email'%}> <i class="ri ri-mail-settings-line"></i> Email</a></li>
+        <li><a href="{%url 'account_change_password'%}"> <i class="ri ri-lock-password-line"></i> Password</a></li>
+        <li><a href="#"> <i class="ri ri-id-card-line"></i> Basic Details</a></li>
+    </ul>
+    <ul class="profile-links logout-link">
+        <li><a href="{%url 'account_logout'%}"> <i class="ri logout ri-logout-circle-r-line"></i> Sign Out</a></li>
+    </ul>
+    </div>
+</section>
+
+<!-- OVERLAY -->
+<div id="overlay" class="overlay hide"></div>
 
 <script>
 
@@ -106,7 +112,7 @@
     });
 
     // TOGGLE SIDEBAR
-    const menuBar = document.querySelector("#content nav .bx.bx-menu");
+    const menuBar = document.querySelector("#content nav .ri.ri-menu-line");
     const sidebar = document.getElementById("sidebar");
 
     menuBar.addEventListener("click", function () {
@@ -117,7 +123,7 @@
         "#content nav form .form-input button"
     );
     const searchButtonIcon = document.querySelector(
-        "#content nav form .form-input button .bx"
+        "#content nav form .form-input button .ri"
     );
     const searchForm = document.querySelector("#content nav form");
 
@@ -126,9 +132,9 @@
             e.preventDefault();
             searchForm.classList.toggle("show");
             if (searchForm.classList.contains("show")) {
-                searchButtonIcon.classList.replace("bx-search", "bx-x");
+                searchButtonIcon.classList.replace("ri-search-2-line", "ri-close-line");
             } else {
-                searchButtonIcon.classList.replace("bx-x", "bx-search");
+                searchButtonIcon.classList.replace("ri-close-line", "ri-search-2-line");
             }
         }
     });
@@ -136,25 +142,46 @@
     if (window.innerWidth < 768) {
         sidebar.classList.add("hide");
     } else if (window.innerWidth > 576) {
-        searchButtonIcon.classList.replace("bx-x", "bx-search");
+        searchButtonIcon.classList.replace("ri-close-line", "ri-search-2-line");
         searchForm.classList.remove("show");
     }
 
     window.addEventListener("resize", function () {
         if (this.innerWidth > 576) {
-            searchButtonIcon.classList.replace("bx-x", "bx-search");
+            searchButtonIcon.classList.replace("ri-close-line", "ri-search-2-line");
             searchForm.classList.remove("show");
         }
     });
 
-    {% comment %} const switchMode = document.getElementById("switch-mode");
+    // RIGHT SIDEBAR SCRIPT
 
-    switchMode.addEventListener("change", function () {
-        if (this.checked) {
-            document.body.classList.add("dark");
-        } else {
-            document.body.classList.remove("dark");
-        }
-    }); {% endcomment %}
+    document.getElementById('toggleBtn').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default anchor behavior
+    var rightSidebar = document.getElementById('right-sidebar');
+    var overlay = document.getElementById('overlay');
+
+    if (rightSidebar.classList.contains('rs-hide')) {
+        rightSidebar.classList.remove('rs-hide');
+        rightSidebar.classList.add('rs-show');
+        overlay.classList.remove('hide');
+        overlay.classList.add('show');
+    } else {
+        rightSidebar.classList.remove('rs-show');
+        rightSidebar.classList.add('rs-hide');
+        overlay.classList.remove('show');
+        overlay.classList.add('hide');
+    }
+});
+
+// Close the sidebar when clicking on the overlay
+document.getElementById('overlay').addEventListener('click', function() {
+    var rightSidebar = document.getElementById('right-sidebar');
+    var overlay = document.getElementById('overlay');
+
+    rightSidebar.classList.remove('rs-show');
+    rightSidebar.classList.add('rs-hide');
+    overlay.classList.remove('show');
+    overlay.classList.add('hide');
+});
 
 </script>
