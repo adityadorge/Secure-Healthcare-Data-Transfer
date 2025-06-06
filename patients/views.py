@@ -5,42 +5,57 @@ from .models import PatientRecord
 # from .serializers import PatientRecordSerializer
 from .fingerprint_matcher import FastFingerprintMatcher
 from cryptography.fernet import Fernet
-import pickle
+import pickle, json
 import numpy as np
 from io import BytesIO
-import json
 from django.shortcuts import render, redirect
+from .forms import PatientEnrollmentForm 
+
 
 def home(request):
     return render(request, 'home.html', {})
 
+def dashboard(request):
+    return render(request, 'dashboard.html', {})
+
 # Initialize fingerprint matcher
 matcher = FastFingerprintMatcher()
 
-@api_view(['POST'])
+# @api_view(['POST'])
 def enroll_patient(request):
-    print("Endpoint for enrolling new patients")
-    try:
-        patient_id = request.POST.get('patient_id')
-        medical_data_raw = request.POST.get('medical_data')
-        print("Raw medical data:", medical_data_raw)
-        fingerprint = request.FILES['fingerprint'].read()
+    if request.method == 'GET':
+        form = PatientEnrollmentForm()
+        return render(request, 'enroll_form.html', {'form': form})
+    
+    elif request.method == 'POST':
+        form = PatientEnrollmentForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                patient_id = form.cleaned_data['patient_id']
+                medical_data_dict = {
+                    'name': form.cleaned_data['name'],
+                    'age': form.cleaned_data['age'],
+                    'gender': form.cleaned_data['gender'],
+                    'address': form.cleaned_data['address'],
+                    'notes': form.cleaned_data['notes'],
+                }
+                fingerprint_file = request.FILES['fingerprint'].read()
 
-        # Process and store securely
-        embedding = matcher.extract_features(BytesIO(fingerprint))
-        medical_data = json.loads(medical_data_raw)  # Safely convert to dict
-        encrypted_data = matcher.encrypt_data(medical_data)
-        
-        
-        PatientRecord.objects.create(
-            patient_id=patient_id,
-            fingerprint_embedding=pickle.dumps(embedding),
-            encrypted_data=encrypted_data,
-        )
-        
-        return JsonResponse({'status': 'success', 'patient_id': patient_id})
-    except Exception as e:
-        return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+                # Extract and encrypt
+                embedding = matcher.extract_features(BytesIO(fingerprint_file))
+                encrypted_data = matcher.encrypt_data(medical_data_dict)
+
+                # Save
+                PatientRecord.objects.create(
+                    patient_id=patient_id,
+                    fingerprint_embedding=pickle.dumps(embedding),
+                    encrypted_data=encrypted_data,
+                )
+                return JsonResponse({'status': 'success', 'patient_id': patient_id})
+            except Exception as e:
+                return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+        else:
+            return JsonResponse({'status': 'error', 'message': 'Invalid form data'}, status=400)
 
 @api_view(['POST'])
 def verify_patient(request):

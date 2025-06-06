@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Enroll Patient</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="fab upload"><i class="ri ri-upload-cloud-2-line"></i>Submit</button>
+  </form>
+{% endblock %}
