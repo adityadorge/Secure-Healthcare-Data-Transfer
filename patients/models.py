@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 
 class PatientRecord(models.Model):
-    # patient_id = models.CharField(max_length=100, unique=True)
+    patient_id = models.CharField(max_length=100, unique=True)
     fingerprint_embedding = models.BinaryField()  # Stores pickled numpy array
     encrypted_data = models.BinaryField()
     created_at = models.DateTimeField(auto_now_add=True)
