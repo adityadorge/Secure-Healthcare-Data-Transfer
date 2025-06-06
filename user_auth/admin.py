@@ -31,8 +31,8 @@ class UserAdmin(BaseUserAdmin):
 
 
 # Ensure users go through the allauth workflow when logging into admin.
-admin.site.login = staff_member_required(admin.site.login, login_url='/accounts/login')
+# admin.site.login = staff_member_required(admin.site.login, login_url='/accounts/login')
 # Run the standard admin set-up.
-admin.autodiscover()
+# admin.autodiscover()
 
 admin.site.register(User, UserAdmin)

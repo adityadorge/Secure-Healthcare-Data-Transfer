@@ -1,9 +1,108 @@
 {% extends 'base.html' %}
 {% block content %}
+<head>
+  <style>
+    .enroll-container {
+      max-width: 600px;
+      width: 90%;
+      margin: 60px auto;
+      padding: 30px 40px;
+      background: linear-gradient(to right, #ffffff, #f3f4f6);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .enroll-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2c3e50;
+    }
+
+    .form-row {
+      margin-bottom: 20px;
+    }
+
+    .form-field label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #34495e;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .form-field small {
+      display: block;
+      margin-top: 5px;
+      color: #7f8c8d;
+      font-size: 12px;
+    }
+
+    .error {
+      color: #e74c3c;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .submit-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .submit-container button {
+      background-color: #3498db;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-container button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+
+<div class="enroll-container">
   <h2>Enroll Patient</h2>
+
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="fab upload"><i class="ri ri-upload-cloud-2-line"></i>Submit</button>
+    {% for field in form %}
+      <div class="form-row">
+        <div class="form-field">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.help_text %}
+            <small>{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+            <div class="error">{{ error }}</div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    <div class="submit-container">
+      <button type="submit" class="fab upload">
+        <i class="ri ri-upload-cloud-2-line"></i>
+        Submit
+      </button>
+    </div>
   </form>
+</div>
 {% endblock %}

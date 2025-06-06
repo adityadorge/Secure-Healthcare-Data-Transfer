@@ -77,3 +77,38 @@ def verify_patient(request):
             return JsonResponse({'status': 'not_found'}, status=404)
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+
+
+from django.shortcuts import render
+from .forms import FingerprintFetchForm
+from .models import PatientRecord
+import pickle
+
+def verify_patient(request):
+    if request.method == 'POST':
+        form = FingerprintFetchForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                fingerprint = request.FILES['fingerprint'].read()
+                embedding = matcher.extract_features(BytesIO(fingerprint))
+                patient = matcher.find_closest_match(embedding)
+
+                if patient:
+                    decrypted_data = matcher.decrypt_data(patient.encrypted_data)
+                    return render(request, 'fetch_report.html', {
+                        'form': form,
+                        'medical_data': decrypted_data
+                    })
+                else:
+                    return render(request, 'fetch_report.html', {
+                        'form': form,
+                        'error': 'No matching record found.'
+                    })
+            except Exception as e:
+                return render(request, 'fetch_report.html', {
+                    # 'form': form,
+                    'error': f'Error processing fingerprint: {e}'
+                })
+    else:
+        form = FingerprintFetchForm()
+    return render(request, 'fetch_report.html', {'form': form})
