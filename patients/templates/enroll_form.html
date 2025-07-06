@@ -3,8 +3,8 @@
 <head>
   <style>
     .enroll-container {
-      max-width: 600px;
-      width: 90%;
+      max-width: 700px;
+      width: 95%;
       margin: 60px auto;
       padding: 30px 40px;
       background: linear-gradient(to right, #ffffff, #f3f4f6);
@@ -19,8 +19,17 @@
       color: #2c3e50;
     }
 
+    .form-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px 32px;
+    }
+
     .form-row {
-      margin-bottom: 20px;
+      flex: 1 1 45%;
+      min-width: 220px;
+      margin-bottom: 0;
+      /* Remove bottom margin, use grid gap */
     }
 
     .form-field label {
@@ -75,6 +84,16 @@
     .submit-container button:hover {
       background-color: #2980b9;
     }
+
+    @media (max-width: 700px) {
+      .form-grid {
+        flex-direction: column;
+        gap: 0;
+      }
+      .form-row {
+        min-width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -83,20 +102,22 @@
 
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {% for field in form %}
-      <div class="form-row">
-        <div class="form-field">
-          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-          {{ field }}
-          {% if field.help_text %}
-            <small>{{ field.help_text }}</small>
-          {% endif %}
-          {% for error in field.errors %}
-            <div class="error">{{ error }}</div>
-          {% endfor %}
+    <div class="form-grid">
+      {% for field in form %}
+        <div class="form-row">
+          <div class="form-field">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.help_text %}
+              <small>{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+              <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
     <div class="submit-container">
       <button type="submit" class="fab upload">
         <i class="ri ri-upload-cloud-2-line"></i>
